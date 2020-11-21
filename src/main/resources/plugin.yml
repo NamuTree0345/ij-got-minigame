@@ -1,0 +1,8 @@
+name: SkillFight
+version: ${project.version}
+main: me.namutree0345.skillfight.SkillFight
+api-version: 1.16
+prefix: skill-fight
+commands:
+  cc:
+    description: Class select
