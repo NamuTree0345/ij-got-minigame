@@ -29,23 +29,15 @@ public class HealNearPlayers extends Skill {
         if(canUse) {
             actCooltime(player, itemStack);
             System.out.println("uhju");
-            int taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
-                @Override
-                public void run() {
-                    Collection<Player> plrs = player.getLocation().getNearbyPlayers(50);
-                    player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20, 20));
-                    plrs.forEach(player1 -> {
-                        player1.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20, 20));
-                    });
+            int taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
+                Collection<Player> plrs = player.getLocation().getNearbyPlayers(50);
+                player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20, 20));
+                plrs.forEach(player1 -> {
+                    player1.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20, 20));
+                });
 
-                }
             }, 0L, 20L);
-            Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                @Override
-                public void run() {
-                    Bukkit.getScheduler().cancelTask(taskID);
-                }
-            }, 400L);
+            Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> Bukkit.getScheduler().cancelTask(taskID), 400L);
 
         }
 

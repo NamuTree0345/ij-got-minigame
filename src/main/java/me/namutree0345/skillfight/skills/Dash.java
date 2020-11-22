@@ -2,11 +2,9 @@ package me.namutree0345.skillfight.skills;
 
 import com.destroystokyo.paper.ParticleBuilder;
 import me.namutree0345.skillfight.objects.Skill;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
-import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
