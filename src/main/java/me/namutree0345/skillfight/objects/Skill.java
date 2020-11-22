@@ -1,5 +1,7 @@
 package me.namutree0345.skillfight.objects;
 
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -19,22 +21,14 @@ public class Skill {
     public void actCooltime(Player player, ItemStack itemStack) {
         if(!canUse) {
             System.out.println("canUseNot");
-            player.sendActionBar(ChatColor.RED + "이 스킬을 사용하려면 " + namunCooltime + "만큼이 필요합니다.");
+            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ChatColor.RED + "이 스킬을 사용하려면 " + namunCooltime + "만큼이 필요합니다."));
         } else {
             canUse = false;
             namunCooltime = cooltime / 20;
-            int id = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
-                @Override
-                public void run() {
-                    namunCooltime--;
-                }
-            }, 0, 20);
-            Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                @Override
-                public void run() {
-                    Bukkit.getScheduler().cancelTask(id);
-                    canUse = true;
-                }
+            int id = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> namunCooltime--, 0, 20);
+            Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+                Bukkit.getScheduler().cancelTask(id);
+                canUse = true;
             }, cooltime);
         }
 

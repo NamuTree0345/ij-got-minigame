@@ -6,3 +6,7 @@ prefix: skill-fight
 commands:
   cc:
     description: Class select
+  sm:
+    description: Set map
+  start:
+    description: start game

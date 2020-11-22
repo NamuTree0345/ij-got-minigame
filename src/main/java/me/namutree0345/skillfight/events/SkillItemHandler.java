@@ -1,18 +1,13 @@
 package me.namutree0345.skillfight.events;
 
-import me.namutree0345.skillfight.objects.Skill;
 import me.namutree0345.skillfight.skills.Dash;
 import me.namutree0345.skillfight.skills.HealNearPlayers;
 import me.namutree0345.skillfight.skills.MassBow;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
