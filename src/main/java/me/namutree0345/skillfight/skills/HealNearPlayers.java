@@ -2,7 +2,6 @@ package me.namutree0345.skillfight.skills;
 
 import me.namutree0345.skillfight.objects.Skill;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -32,9 +31,7 @@ public class HealNearPlayers extends Skill {
             int taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
                 Collection<Player> plrs = player.getLocation().getNearbyPlayers(50);
                 player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20, 20));
-                plrs.forEach(player1 -> {
-                    player1.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20, 20));
-                });
+                plrs.forEach(player1 -> player1.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20, 20)));
 
             }, 0L, 20L);
             Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> Bukkit.getScheduler().cancelTask(taskID), 400L);
